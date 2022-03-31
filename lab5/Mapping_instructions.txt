@@ -17,9 +17,28 @@ For simulation:
 	(for simulation: in RViz top menu, do 2D Pose Estimate)
 	c. rostopic pub /move_base_simple/goal geometry_msgs/PoseStamped ‘header: stamp: now, frame id: "YOUR MAP NAME", pose: position: x: 1.0, y: 0.0, z: 0.0, orientation: x: 0, y: 0, z: 0, w: 1.0’
 	(for simulation: In RViz top menu, do 2D Nav Goal)
+
+
+
+How I created acds_maze_lab5 package:
+catkin_create_pkg acds_maze_lab5 std_msgs rospy roscpp geometry_msgs nav_msgs sensor_msgs
 	
 
 FOR EXAMPLES OF POSE STAMPED MESSAGES: https://www.programcreek.com/python/example/70252/geometry_msgs.msg.PoseStamped
-	
-How I created acds_maze_lab5 package:
-catkin_create_pkg acds_maze_lab5 std_msgs rospy roscpp geometry_msgs nav_msgs sensor_msgs
+
+PERDI A PORRA DO .py
+> open('global_waypoints.txt') as waypoints
+> for lines in waypoints
+#readline() -- precisa?
+wp = line.split(', ')
+pose.position.x = wp[0]
+...
+pose.orientation.w = wp[6]
+publish pose
+wait til it gets there: compare with odom???
+when treshold met, display, do a 360 or smt, wait for 2s
+read next line and go to that wp
+
+
+
+
