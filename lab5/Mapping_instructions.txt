@@ -1,0 +1,25 @@
+For simulation: 
+0. Make sure all the maze files (folders, .launch and .world) are correctly setup following the instructions of 7785_Lab5_Gazebo_Files > README.md, as well as setting up the PC to be master and host
+1. catkin_make; source devel/setup.bash; roscore &
+2. Mapping:
+	a. roslaunch turtlebot3_bringup turtlebot3_robot.launch
+	(for simulation: roslaunch turtlebot3_gazebo turtlebot3_maze.launch)
+	   
+	b. roslaunch turtlebot3_slam turtlebot3_slam.launch
+	(for simulation: roslaunch turtlebot3_gazebo roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping)
+	c. roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch (teleop)
+	d. Drive around and create the map
+	e. Save the map via rosrun map_server map_saver -f <Desired_Location>/map (instructions say ... -f ~/map)
+
+3. Navigating:
+	a. roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+	b. 
+	(for simulation: in RViz top menu, do 2D Pose Estimate)
+	c. rostopic pub /move_base_simple/goal geometry_msgs/PoseStamped ‘header: stamp: now, frame id: "YOUR MAP NAME", pose: position: x: 1.0, y: 0.0, z: 0.0, orientation: x: 0, y: 0, z: 0, w: 1.0’
+	(for simulation: In RViz top menu, do 2D Nav Goal)
+	
+
+FOR EXAMPLES OF POSE STAMPED MESSAGES: https://www.programcreek.com/python/example/70252/geometry_msgs.msg.PoseStamped
+	
+How I created acds_maze_lab5 package:
+catkin_create_pkg acds_maze_lab5 std_msgs rospy roscpp geometry_msgs nav_msgs sensor_msgs
