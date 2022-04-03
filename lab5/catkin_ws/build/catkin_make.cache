@@ -1,0 +1,2 @@
+acds_maze_lab5
+-DCATKIN_DEVEL_PREFIX=/home/arthur/Documents/AE-7785/lab5/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/arthur/Documents/AE-7785/lab5/catkin_ws/install -G Unix Makefiles

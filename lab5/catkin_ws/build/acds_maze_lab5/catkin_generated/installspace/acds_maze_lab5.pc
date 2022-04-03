@@ -1,0 +1,8 @@
+prefix=/home/arthur/Documents/AE-7785/lab5/catkin_ws/install
+
+Name: acds_maze_lab5
+Description: Description of acds_maze_lab5
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
